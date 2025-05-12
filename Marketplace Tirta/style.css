@@ -1,0 +1,52 @@
+.label-diskon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+#welcomeScreen{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(background.jpg);
+    background-size: cover;
+    background-position:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+#welcomeScreen h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+#btnLanjutkan {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+#btnLanjutkan:hover{
+    background-color: #0056b3;
+}
+#welcomeFont {
+    font-size: 13px;
+    color: white;
+    text-align: center;
+}
