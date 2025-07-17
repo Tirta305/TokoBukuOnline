@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  </head>
+  <body class="bg-secondary">
+    <div id="welcomeScreen">
+      <h1 class="fade-in">Selamat Datang di Project Web Saya!</h1>
+      <p id="welcomeFont">Halo semua perkenalkan nama saya <strong>TIRTA AMANDA PUTRA</strong>, Saya merupakan utusan dari sekolah <strong>SMKN 7 SIDRAP</strong>. <br>Website ini merupakan Hasil Project saya dalam kegiatan <strong>"1 SEKOLAH 1 PROGRAMMER ANDALAN"</strong> <br>Terima kasih telah berkunjung, Temukan berbagai informasi tentang buku menarik dan layanan terbaik disini.</p>
+      <button id="btnLanjutkan">Lanjutkan</button>
+    </div>
+    <div id="mainContent" class="container p-0 mb-4 mt-4 rounded-3 shadow bg-white">
+      <nav class="menu-bar d-flex justify-content-between align-items-center px-4">
+       <div class="menu-left">
+       <a href="index.html" class="menu-item back-btn"><h1>TBS</h1></a>
+       </div>
+       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+       <div id="navLinks">
+          <ul class="nav" >
+               <li class="nav-item mx-2">                
+                <a href="#kategori" class="menu-item" class="dropdown" onclick="toggleDropdown()">Kategori</a>
+                <ul id="kategoriDropdown" class="dropdown-content">
+                  <li><a href="#kategori" onclick="filterKategori('sains dan teknologi')">Sains dan Teknologi</a></li>
+                  <li><a href="#kategori" onclick="filterKategori('motivasi')">Motivasi</a></li>
+                  <li><a href="#kategori" onclick="filterKategori('pelajaran')">Pelajaran</a></li>
+                  <li><a href="#kategori" onclick="filterKategori('novel')">Novel</a></li>
+                  <li><a href="#kategori" onclick="filterKategori('cerpen')">Cerpen</a></li>
+                  <li><a href="#kategori" onclick="filterKategori(null)">Semua Kategori</a></li>
+                </ul></li>
+               <li class="nav-item mx-2"><a href='#koleksi' class="menu-item">Produk Kami</a></li>
+               <li class="nav-item mx-2"><a href='#order' class="menu-item" >Cara Order</a></li>
+              <li class="nav-item mx-2"><a href='#tentang' class="menu-item" >Tentang Kami</a></li>
+              <button id="cartMenu" class="btn btn-warning">🛒(<span id="cart-count">0</span>)</button>
+          </ul>
+       </div>
+     </nav>
+
+      <div class="px-4 my-5">
+        <img src="images/banner3.jpg" class="w-100 rounded-3 shadow"/>
+      </div>
+
+      <h3 class="text-center" id="koleksi">Produk Kami</h3>
+      <div class="text-center w-50 mx-auto fw-light">Kami Menyediakan Buku-Buku Yang Menarik dan Terupdate.</div>
+
+      <div class="search-bar">
+        <input type="text" id="inputPencarian" class="form-control" placeholder="Judul Buku..." oninput="cekKosong()">
+        <button onclick="cariBuku()" class="btn btn-primary">Cari</button>
+      </div>
+      
+      <div id="pesanTidakDitemukan" class="alert alert-warning text-center d-none" role="alert">
+        Buku tidak ditemukan
+      </div>
+
+      <div class="container">
+        <div id="bookList" class="row"></div>
+        <nav>
+          <ul id="pagination" class="pagination justify-content-center mt-4"></ul>
+        </nav>
+      </div>
+
+      <button onclick="scrollToTop()" id="btnTop" title="kembali ke atas">Ke Atas</button>
+
+      <div id="tentang" class="px-4 py-4 bg-secondary text-center">
+        <div class="mx-auto w-75">
+            <h3 class="text-white">Tentang Kami</h3>
+            <p class="text-center text-white">di "TBS", toko buku online yang menghadirkan beragam pilihan buku berkualitas dari berbagai penerbit dalam negeri. Kami percaya Bahwa membaca adalah jendela dunia,dan misi kami adalah mendekatkan buku kepada semua orang,dimana pun mereka berada.</p>
+            <p class="text-center text-white">Dengan koleksi yang terus diperbarui, kami berkomitmen untuk menyediakan buku-buku terbaik,mulai dari fiksi, non-fiksi, buku anak,hingga buku pelajaran dan referensi. kami juga bekerja sama dengan penerbit dan penulis lokal untuk mendukung literasi dan perkembangan dunia literasi di Indonesia.</p>
+            <p class="text-center text-white">Belanja buku kini lebih mudah, praktis, dan menyenangkan bersama "TBS". Terima kasih telah menjadi bagian dari perjalanan kami!.</p>
+        </div>
+      </div>
+
+      <div id="order" class="px-4 py-4 bg-ligth text-center">
+        <div class="mx-auto w-75">
+            <h3 class="text-black">Cara Order</h3>
+            <p class="text-center text-black">Pilih produk yang ingin dibeli, lalu Click tombol "detail" untuk melihat deskripsi produk tersebut, didalam menu detail tesebut ada tombol "beli produk ini",click tombol tersebut,setelah itu anda akan otomatis dialihkan ke whatsapp untuk melakukan transaksi pembelian.</p>
+        </div>
+      </div>
+
+      <div class="text-center p-4 border-top">&copy; TBS-1S1P2025 by Tirta Amanda Putra</div>
+    </div>
+
+<button type="button" class="btn btn-primary d-none btnModal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 modalTitle" id="exampleModalLabel"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body row">
+            <div class="modalImage col-md-6 col-12"></div>
+            <div class="col-md-6 col-12">
+                <div class="modalDeskripsi"></div>
+                <div class="d-md-flex">
+                    <a href="" target ="blank" class="btn btn-sm btn-warning d-block btnBeli">Beli produk Ini</a>
+                    <span class="ms-auto text-danger fw-bold d-block text-center modalHarga"></span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
